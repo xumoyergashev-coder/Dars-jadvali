@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<!-- saved from url=(0069)file:///C:/Users/user/Downloads/dars-jadvali-mamuriy-huquq%20(1).html -->
+<html lang="uz"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#1a1a2e">
+    <title>Dars Jadvali - Ma'muriy Huquq</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --bg-primary: #0f0f1e;
+            --bg-secondary: #1a1a2e;
+            --bg-card: #16213e;
+            --accent: #e94560;
+            --accent-secondary: #0f3460;
+            --text-primary: #eaeaea;
+            --text-secondary: #a0a0a0;
+            --success: #00d9ff;
+            --warning: #ffc107;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 50%, #16213e 100%);
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(233,69,96,0.1) 0%, transparent 70%);
+            animation: pulse 15s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(180deg); }
+        }
+
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 20px;
+            padding-bottom: 100px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .date-display {
+            font-size: 14px;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .current-time {
+            font-size: 48px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(233,69,96,0.3);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .day-name {
+            font-size: 24px;
+            color: var(--text-primary);
+            margin-top: 5px;
+            font-weight: 600;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            padding: 5px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .nav-tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-tab {
+            flex: 1;
+            min-width: 80px;
+            padding: 12px 16px;
+            background: var(--bg-card);
+            border: 2px solid transparent;
+            border-radius: 16px;
+            color: var(--text-secondary);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            white-space: nowrap;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-tab.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(233,69,96,0.3);
+        }
+
+        .nav-tab.yesterday {
+            border-color: var(--text-secondary);
+        }
+
+        .nav-tab.tomorrow {
+            border-color: var(--success);
+        }
+
+        .nav-tab .day-label {
+            font-size: 11px;
+            opacity: 0.8;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .nav-tab .date-num {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .current-lesson-banner {
+            background: linear-gradient(135deg, var(--accent) 0%, #ff6b6b 100%);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(233,69,96,0.4);
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .current-lesson-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        .banner-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+
+        .banner-subject {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .banner-time {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+
+        .countdown {
+            background: rgba(0,0,0,0.2);
+            border-radius: 12px;
+            padding: 12px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .countdown-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            opacity: 0.8;
+        }
+
+        .countdown-time {
+            font-size: 28px;
+            font-weight: 700;
+            font-variant-numeric: tabular-nums;
+            color: #fff;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .lessons-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .lesson-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 16px;
+            border-left: 4px solid var(--accent-secondary);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lesson-card.active {
+            border-left-color: var(--accent);
+            background: linear-gradient(90deg, rgba(233,69,96,0.1) 0%, var(--bg-card) 100%);
+            transform: scale(1.02);
+            box-shadow: 0 5px 20px rgba(233,69,96,0.2);
+        }
+
+        .lesson-card.completed {
+            opacity: 0.6;
+            border-left-color: var(--success);
+        }
+
+        .lesson-card.upcoming {
+            border-left-color: var(--warning);
+        }
+
+        .lesson-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+
+        .lesson-number {
+            background: var(--accent-secondary);
+            color: var(--text-primary);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .lesson-card.active .lesson-number {
+            background: var(--accent);
+            animation: pulse-number 2s infinite;
+        }
+
+        @keyframes pulse-number {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(233,69,96,0.7); }
+            50% { box-shadow: 0 0 0 10px rgba(233,69,96,0); }
+        }
+
+        .lesson-time {
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .lesson-subject {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+
+        .lesson-type {
+            display: inline-block;
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            background: var(--accent-secondary);
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .lesson-card.active .lesson-type {
+            background: var(--accent);
+            color: white;
+        }
+
+        .lesson-room {
+            font-size: 13px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .lesson-status {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            font-size: 11px;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .lesson-status.now {
+            background: var(--accent);
+            color: white;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .lesson-status.finished {
+            background: var(--success);
+            color: var(--bg-primary);
+        }
+
+        .lesson-status.pending {
+            background: var(--warning);
+            color: var(--bg-primary);
+        }
+
+        .calendar-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .calendar-modal.active {
+            display: flex;
+            flex-direction: column;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 10px 0;
+        }
+
+        .calendar-title {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .close-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: none;
+            color: var(--text-primary);
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .close-btn:hover {
+            background: var(--accent);
+            transform: rotate(90deg);
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .calendar-day-header {
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-secondary);
+            padding: 10px 0;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-card);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            border: 2px solid transparent;
+        }
+
+        .calendar-day:hover {
+            transform: scale(1.1);
+            border-color: var(--accent);
+            z-index: 10;
+        }
+
+        .calendar-day.other-month {
+            opacity: 0.3;
+        }
+
+        .calendar-day.today {
+            background: var(--accent);
+            color: white;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(233,69,96,0.4);
+        }
+
+        .calendar-day.selected {
+            border-color: var(--success);
+            background: var(--accent-secondary);
+        }
+
+        .calendar-day.has-lessons::after {
+            content: '';
+            position: absolute;
+            bottom: 6px;
+            width: 4px;
+            height: 4px;
+            background: var(--success);
+            border-radius: 50%;
+        }
+
+        .calendar-day.today.has-lessons::after {
+            background: white;
+        }
+
+        .day-number {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .calendar-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 0 10px;
+        }
+
+        .nav-arrow {
+            background: var(--bg-card);
+            border: none;
+            color: var(--text-primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+
+        .nav-arrow:hover {
+            background: var(--accent);
+        }
+
+        .month-year {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent) 0%, #ff6b6b 100%);
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(233,69,96,0.4);
+            transition: all 0.3s;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .fab:hover {
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 8px 30px rgba(233,69,96,0.6);
+        }
+
+        .fab:active {
+            transform: scale(0.95);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-secondary);
+        }
+
+        .empty-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+            opacity: 0.5;
+        }
+
+        .empty-text {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .day-progress {
+            background: var(--bg-card);
+            border-radius: 10px;
+            height: 6px;
+            margin: 20px 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .day-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent) 0%, var(--success) 100%);
+            border-radius: 10px;
+            transition: width 1s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .day-progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .install-hint {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 13px;
+            font-weight: 600;
+            box-shadow: 0 5px 20px rgba(233,69,96,0.4);
+            display: none;
+            animation: bounce 2s infinite;
+            z-index: 99;
+            white-space: nowrap;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        .install-hint.show {
+            display: block;
+        }
+
+        @media (max-width: 380px) {
+            .current-time { font-size: 36px; }
+            .container { padding: 15px; }
+            .lesson-card { padding: 12px; }
+        }
+
+        @media (hover: none) {
+            .lesson-card:active { transform: scale(0.98); }
+            .nav-tab:active { transform: scale(0.95); }
+        }
+
+        @supports (padding-bottom: env(safe-area-inset-bottom)) {
+            .container { padding-bottom: calc(100px + env(safe-area-inset-bottom)); }
+            .fab { bottom: calc(30px + env(safe-area-inset-bottom)); }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    
+    <div class="container">
+        <div class="header">
+            <div class="date-display" id="currentDate">juma, 20-fevral, 2026</div>
+            <div class="current-time" id="currentTime">14:40</div>
+            <div class="day-name" id="dayName">juma</div>
+        </div>
+
+        <div class="nav-tabs" id="navTabs">
+            <button class="nav-tab yesterday" onclick="changeDay(-1)">
+                <span class="day-label">Kecha</span>
+                <span class="date-num" id="yesterdayNum">19</span>
+            </button>
+            <button class="nav-tab active" onclick="goToToday()">
+                <span class="day-label">Bugun</span>
+                <span class="date-num" id="todayNum">20</span>
+            </button>
+            <button class="nav-tab tomorrow" onclick="changeDay(1)">
+                <span class="day-label">Ertaga</span>
+                <span class="date-num" id="tomorrowNum">21</span>
+            </button>
+        </div>
+
+        <div class="day-progress" id="dayProgress" style="display: block;">
+            <div class="day-progress-bar" id="progressBar" style="width: 75%;"></div>
+        </div>
+
+        <div id="currentLessonBanner" style="display: block;">
+            <div class="current-lesson-banner">
+                <div class="banner-label">Joriy dars</div>
+                <div class="banner-subject" id="bannerSubject">Имитация жараёни, назарий билимлар, амалий кўникма ва процессуал ҳужжатлар сифатини баҳолаш</div>
+                <div class="banner-time" id="bannerTime">14:30-17:00 | Имитация</div>
+                <div class="countdown">
+                    <div class="countdown-label">Tugashiga qoldi</div>
+                    <div class="countdown-time" id="countdownTime">02:19:18</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="lessons-container" id="lessonsContainer" style="display: flex;"><div class="lesson-card completed">
+                    <span class="lesson-status finished">Tugadi</span>
+                    <div class="lesson-header">
+                        <div class="lesson-number">1</div>
+                        <div class="lesson-time">09:00-10:20</div>
+                    </div>
+                    <div class="lesson-subject">Судья фаолиятида суд иштирокчиларининг вербал ва новербал хатти-ҳаракатларининг аҳамияти</div>
+                    <span class="lesson-type">Амалий машғулот</span>
+                    <div class="lesson-room">📍 Бино-1, 4-қават, 4-хона, 22 та</div>
+                </div><div class="lesson-card completed">
+                    <span class="lesson-status finished">Tugadi</span>
+                    <div class="lesson-header">
+                        <div class="lesson-number">2</div>
+                        <div class="lesson-time">10:30-11:50</div>
+                    </div>
+                    <div class="lesson-subject">Инвестициялар ва инвестиция фаолияти билан боғлиқ низоларнинг маъмурий судлар томонидан кўрилиши хусусиятлари</div>
+                    <span class="lesson-type">Имитация</span>
+                    <div class="lesson-room">📍 Бино-1, 4-қават, 4-хона, 22 та</div>
+                </div><div class="lesson-card completed">
+                    <span class="lesson-status finished">Tugadi</span>
+                    <div class="lesson-header">
+                        <div class="lesson-number">3</div>
+                        <div class="lesson-time">12:00-13:20</div>
+                    </div>
+                    <div class="lesson-subject">Инвестициялар ва инвестиция фаолияти билан боғлиқ низоларнинг маъмурий судлар томонидан кўрилиши хусусиятлари</div>
+                    <span class="lesson-type">Имитация</span>
+                    <div class="lesson-room">📍 Бино-1, 4-қават, 4-хона, 22 та</div>
+                </div><div class="lesson-card active">
+                    <span class="lesson-status now">Hozir</span>
+                    <div class="lesson-header">
+                        <div class="lesson-number">4</div>
+                        <div class="lesson-time">14:30-17:00</div>
+                    </div>
+                    <div class="lesson-subject">Имитация жараёни, назарий билимлар, амалий кўникма ва процессуал ҳужжатлар сифатини баҳолаш</div>
+                    <span class="lesson-type">Имитация</span>
+                    <div class="lesson-room">📍 Бино-1, 4-қават, 4-хона, 22 та</div>
+                </div></div>
+
+        <div class="empty-state" id="emptyState" style="display: none;">
+            <div class="empty-icon">📚</div>
+            <div class="empty-text">Bu kunga dars jadvali mavjud emas</div>
+        </div>
+    </div>
+
+    <button class="fab" onclick="openCalendar()" aria-label="Kalendar">📅</button>
+
+    <div class="install-hint" id="installHint">
+        📱 Bosh ekranga qo'shish uchun "Share" tugmasini bosing
+    </div>
+
+    <div class="calendar-modal" id="calendarModal">
+        <div class="calendar-header">
+            <h2 class="calendar-title">Kalendar 2026</h2>
+            <button class="close-btn" onclick="closeCalendar()">×</button>
+        </div>
+        
+        <div class="calendar-nav">
+            <button class="nav-arrow" onclick="changeMonth(-1)">‹</button>
+            <div class="month-year" id="monthYear">Yanvar 2026</div>
+            <button class="nav-arrow" onclick="changeMonth(1)">›</button>
+        </div>
+
+        <div class="calendar-grid" id="calendarGrid"></div>
+    </div>
+
+    <script>
+        const scheduleData = {
+            '2026-02-02': [
+                { num: 1, time: '09:00-10:20', subject: 'Бюджетдан ташқари пенсия жамғармалари мансабдор шахсларининг хатти-ҳаракатлари (қарорлари) билан боғлиқ низолар', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Бюджетдан ташқари пенсия жамғармалари мансабдор шахсларининг хатти-ҳаракатлари (қарорлари) билан боғлиқ низолар', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Пенсия тайинлаш ва ҳисоблаб чиқариш билан боғлиқ низолар', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' },
+                { num: 4, time: '14:30-17:00', subject: 'Ўзбекистон Республикаси Молия вазирлиги ҳузуридаги бюджетдан ташқари Пенсия жамғармаси туман бўлимлари фаолиятини ўрганиш', type: 'Деонтология', room: 'Пенсия жамғармасида', end: '17:00' }
+            ],
+            '2026-02-03': [
+                { num: 1, time: '09:00-10:20', subject: 'Пенсия тайинлаш ва ҳисоблаб чиқариш билан боғлиқ низолар', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Иш стажини ва иш ҳақини ҳисоблаб чиқиш билан боғлиқ низолар', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Иш стажини ва иш ҳақини ҳисоблаб чиқиш билан боғлиқ низолар', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' },
+                { num: 4, time: '14:30-17:00', subject: 'Имитация жараёни, назарий билимлар, амалий кўникма ва процессуал ҳужжатлар сифатини баҳолаш', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '17:00' }
+            ],
+            '2026-02-04': [
+                { num: 1, time: '09:00-10:20', subject: 'Рақобат тўғрисидаги қонунчилик бузилиши билан боғлиқ ишларни судда кўриб чиқишда моддий ва процессуал қонунчилик асослари', type: 'Назарий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Товар белгиси билан боғлиқ рақобат тўғрисидаги қонунчилик бузилиши билан боғлиқ низолар', type: 'Назарий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Рақобат тўғрисидаги қонунчилик бузилиши билан боғлиқ ишларни судда кўриб чиқишда моддий ва процессуал қонунчилик асослари', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' },
+                { num: 4, time: '14:30-17:00', subject: 'Тошкент туманлараро маъмурий судида рақобат тўғрисидаги қонунчилик бузилиши билан боғлиқ низолар бўйича суд амалиётини ўрганиш', type: 'Деонтология', room: 'Тошкент туманлараро маъмурий судида', end: '17:00' }
+            ],
+            '2026-02-05': [
+                { num: 1, time: '09:00-10:20', subject: 'Товар белгиси билан боғлиқ рақобат тўғрисидаги қонунчилик бузилиши билан боғлиқ низолар', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Ўзбекистон Республикаси Олий Мажлиси ва Вазирлар Маҳкамаси', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Суд тизимида коррупцияга қарши курашишнинг ўзига хос жиҳатлари', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' },
+                { num: 4, time: '14:30-17:00', subject: 'Тошкент туманлараро маъмурий судида рақобат тўғрисидаги қонунчилик бузилиши билан боғлиқ низолар бўйича суд амалиётини ўрганиш', type: 'Деонтология', room: 'Тошкент туманлараро маъмурий судида', end: '17:00' }
+            ],
+            '2026-02-06': [
+                { num: 1, time: '09:00-10:20', subject: 'Конфликтология', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Товар белгиси билан боғлиқ рақобат тўғрисидаги қонунчилик бузилиши билан боғлиқ низолар', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Монополияга қарши орган ва унинг мансабдор шахси қарорлари, хатти-ҳаракатлари устидан низолашиш билан боғлиқ низолар', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' },
+                { num: 4, time: '14:30-17:00', subject: 'Тошкент шаҳар маъмурий судида рақобат тўғрисидаги қонунчилик бузилиши билан боғлиқ низолар бўйича суд амалиётини ўрганиш', type: 'Деонтология', room: 'Тошкент шаҳар маъмурий судида', end: '17:00' }
+            ],
+            '2026-02-07': [
+                { num: 1, time: '09:00-10:20', subject: 'Судлар томонидан халқаро шартномалар нормалари қоидаларининг қўлланилиши', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Судьянинг ОАВ билан ўзаро муносабатлари', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Монополияга қарши орган ва унинг мансабдор шахси қарорлари, хатти-ҳаракатлари устидан низолашиш билан боғлиқ низолар', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' },
+                { num: 4, time: '14:00-16:00', subject: 'Музейга олиб бориш', type: 'Тадбир', room: 'Музей', end: '16:00' }
+            ],
+            '2026-02-09': [
+                { num: 1, time: '09:00-10:20', subject: 'Монополияга қарши орган ва унинг мансабдор шахси қарорлари, хатти-ҳаракатлари устидан низолашиш билан боғлиқ низолар', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Монополияга қарши орган ва унинг мансабдор шахси қарорлари, хатти-ҳаракатлари устидан низолашиш билан боғлиқ низолар', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Товар белгиси билан боғлиқ рақобат тўғрисидаги қонунчилик бузилиши билан боғлиқ низолар', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' },
+                { num: 4, time: '14:30-17:00', subject: 'Ўзбекистон Республикаси Рақобатни ривожлантириш ва истеъмолчилар ҳуқуқларини ҳимоя қилиш қўмитаси ва Тошкент шаҳар ҳудудий бошқармаси фаолияти билан танишиш', type: 'Деонтология', room: 'Ўзбекистон Республикаси Рақобатни ривожлантириш ва истеъмолчилар ҳуқуқларини ҳимоя қилиш қўмитасида', end: '17:00' }
+            ],
+            '2026-02-10': [
+                { num: 1, time: '09:00-10:20', subject: 'Товар белгиси билан боғлиқ рақобат тўғрисидаги қонунчилик бузилиши билан боғлиқ низолар', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Монополияга қарши орган ва унинг мансабдор шахси қарорлари, хатти-ҳаракатлари устидан низолашиш билан боғлиқ низолар', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Божхона органларининг, улар мансабдор шахсларининг қарорлари, ҳаракатлари (ҳаракатсизлиги) устидан шикоят қилиш билан боғлиқ низолар', type: 'Назарий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' },
+                { num: 4, time: '14:30-17:00', subject: 'Имитация жараёни, назарий билимлар, амалий кўникма ва процессуал ҳужжатлар сифатини баҳолаш', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '17:00' }
+            ],
+            '2026-02-11': [
+                { num: 1, time: '09:00-10:20', subject: 'Божхона режимларининг қўлланилиниши билан боғлиқ тартиб-таомилларнинг бузилиши билан боғлиқ низолар', type: 'Назарий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Божхона органларининг, улар мансабдор шахсларининг қарорлари, ҳаракатлари (ҳаракатсизлиги) устидан шикоят қилиш билан боғлиқ низолар', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Божхона органларининг, улар мансабдор шахсларининг қарорлари, ҳаракатлари (ҳаракатсизлиги) устидан шикоят қилиш билан боғлиқ низолар', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' },
+                { num: 4, time: '14:30-17:00', subject: 'Ўзбекистон Республикаси Ташқи ишлар вазирлиги, Консуллик-хукукий департаментининг Фукаролик масалалари, легализация ва бошка консуллик харакатлар бошкармаси', type: 'Деонтология', room: 'Ўзбекистон Республикаси Ташқи ишлар вазирлиги', end: '17:00' }
+            ],
+            '2026-02-12': [
+                { num: 1, time: '09:00-10:20', subject: 'Божхона органларининг, улар мансабдор шахсларининг қарорлари, ҳаракатлари (ҳаракатсизлиги) устидан шикоят қилиш билан боғлиқ низолар', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Маҳаллий давлат ҳокимияти органлари, Фуқароларнинг ўзини ўзи бошқариш органлари ва фуқаролик жамияти институтлари', type: 'Назарий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Суд тизимида коррупциявий омилларни бартараф этишда судлар фаолиятини рақамлаштиришнинг ўрни ва мазмуни', type: 'Назарий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' },
+                { num: 4, time: '14:30-17:00', subject: 'Тошкент туманлараро маъмурий судида рақобат тўғрисидаги қонунчилик бузилиши билан боғлиқ низолар бўйича суд амалиётини ўрганиш', type: 'Деонтология', room: 'Тошкент вилоят маъмурий судида', end: '17:00' }
+            ],
+            '2026-02-13': [
+                { num: 1, time: '09:00-10:20', subject: 'Конфликтология', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Божхона режимларининг қўлланилиниши билан боғлиқ тартиб-таомилларнинг бузилиши билан боғлиқ низолар', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Божхона режимларининг қўлланилиниши билан боғлиқ тартиб-таомилларнинг бузилиши билан боғлиқ низолар', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' },
+                { num: 4, time: '14:00-16:00', subject: 'Тошкент шаҳар маъмурий судида рақобат тўғрисидаги қонунчилик бузилиши билан боғлиқ низолар бўйича суд амалиётини ўрганиш', type: 'Деонтология', room: 'Тошкент шаҳар маъмурий судида', end: '16:00' }
+            ],
+            '2026-02-14': [
+                { num: 1, time: '09:00-10:20', subject: 'Судлар томонидан халқаро шартномалар нормалари қоидаларининг қўлланилиши', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Суд процессида этика нормалари талаблари', type: 'Назарий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Божхона органларининг, улар мансабдор шахсларининг қарорлари, ҳаракатлари (ҳаракатсизлиги) устидан шикоят қилиш билан боғлиқ низолар', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' },
+                { num: 4, time: '18:00', subject: 'Театрга олиб бориш', type: 'Тадбир', room: 'Театр', end: '20:00' }
+            ],
+            '2026-02-16': [
+                { num: 1, time: '09:00-10:20', subject: 'Божхона органларининг, улар мансабдор шахсларининг қарорлари, ҳаракатлари (ҳаракатсизлиги) устидан шикоят қилиш билан боғлиқ низолар', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Божхона органларининг, улар мансабдор шахсларининг қарорлари, ҳаракатлари (ҳаракатсизлиги) устидан шикоят қилиш билан боғлиқ низолар', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Божхона режимларининг қўлланилиниши билан боғлиқ тартиб-таомилларнинг бузилиши билан боғлиқ низолар', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' },
+                { num: 4, time: '14:30-17:00', subject: 'Ўзбекистон Республикаси Иқтисодиёт ва молия вазирлиги ҳузуридаги Божхона қўмитаси Тошкент вилоят бошқармаси фаолияти билан танишиш', type: 'Деонтология', room: 'Божхона қўмитасида', end: '17:00' }
+            ],
+            '2026-02-17': [
+                { num: 1, time: '09:00-10:20', subject: 'Божхона режимларининг қўлланилиниши билан боғлиқ тартиб-таомилларнинг бузилиши билан боғлиқ низолар', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Инвестициялар ва инвестиция фаолияти билан боғлиқ низоларнинг маъмурий судлар томонидан кўрилиши хусусиятлари', type: 'Назарий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Инвестициялар ва инвестиция фаолияти билан боғлиқ низоларнинг маъмурий судлар томонидан кўрилиши хусусиятлари', type: 'Назарий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' },
+                { num: 4, time: '14:30-17:00', subject: 'Имитация жараёни, назарий билимлари, амалий кўникмаси ва процессуал ҳужжатлар сифатини баҳолаш', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '17:00' }
+            ],
+            '2026-02-18': [
+                { num: 1, time: '09:00-10:20', subject: 'Инвестициялар ва инвестиция фаолияти билан боғлиқ низоларнинг маъмурий судлар томонидан кўрилиши хусусиятлари', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Инвестициялар ва инвестиция фаолияти билан боғлиқ низоларнинг маъмурий судлар томонидан кўрилиши хусусиятлари', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Инвестициялар ва инвестиция фаолияти билан боғлиқ низоларнинг маъмурий судлар томонидан кўрилиши хусусиятлари', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' },
+                { num: 4, time: '14:30-17:00', subject: 'Тошкент туманлараро маъмурий судида инвестициялар ва инвестиция фаолияти билан боғлиқ низолар бўйича суд амалиётини ўрганиш', type: 'Деонтология', room: 'Тошкент туманлараро маъмурий судида', end: '17:00' }
+            ],
+            '2026-02-19': [
+                { num: 1, time: '09:00-10:20', subject: 'Инвестициялар ва инвестиция фаолияти билан боғлиқ низоларнинг маъмурий судлар томонидан кўрилиши хусусиятлари', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Маҳаллий давлат ҳокимияти органлари, Фуқароларнинг ўзини ўзи бошқариш органлари ва фуқаролик жамияти институтлари', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Суд тизимида коррупцияга қарши курашишнинг халқаро-ҳуқуқий асослари', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' },
+                { num: 4, time: '14:30-17:00', subject: 'Ўзбекистон Республикаси Инвестициялар, саноат ва савдо вазирлги ва вазирлик ҳузуридаги Хорижий инвестицияларни жалб этиш агентлиги фаолияти билан танишиш', type: 'Деонтология', room: 'Ўзбекистон Республикаси Инвестициялар, саноат ва савдо вазирлгида', end: '17:00' }
+            ],
+            '2026-02-20': [
+                { num: 1, time: '09:00-10:20', subject: 'Судья фаолиятида суд иштирокчиларининг вербал ва новербал хатти-ҳаракатларининг аҳамияти', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Инвестициялар ва инвестиция фаолияти билан боғлиқ низоларнинг маъмурий судлар томонидан кўрилиши хусусиятлари', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Инвестициялар ва инвестиция фаолияти билан боғлиқ низоларнинг маъмурий судлар томонидан кўрилиши хусусиятлари', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' },
+                { num: 4, time: '14:30-17:00', subject: 'Имитация жараёни, назарий билимлар, амалий кўникма ва процессуал ҳужжатлар сифатини баҳолаш', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '17:00' }
+            ],
+            '2026-02-21': [
+                { num: 1, time: '09:00-10:20', subject: 'Судлар томонидан халқаро шартномалар нормалари қоидаларининг қўлланилиши', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Суд процессида этика нормалари талаблари', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Мажбурий ижро бюросининг ва мансабдор шахсларининг қарорлари билан боғлиқ ишлар', type: 'Назарий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' }
+            ],
+            '2026-02-23': [
+                { num: 1, time: '09:00-10:20', subject: 'Мажбурий ижро бюросининг ва мансабдор шахсларининг ҳаракатлари(ҳаракатсизлиги) билан боғлиқ ишлар', type: 'Назарий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Мажбурий ижро бюросининг чет элга чиқишга таъқиқ қўйиши билан боғлиқ низолар', type: 'Назарий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Мажбурий ижро бюросининг ва мансабдор шахсларининг қарорлари билан боғлиқ ишлар', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' },
+                { num: 4, time: '14:30-17:00', subject: 'Тошкент туманлараро маъмурий судида мажбурий ижро бюросининг қарорлари ва мансабдор шахсларининг ҳаракатлари(ҳаракатсизлиги) билан боғлиқ ишлар бўйича суд амалиётини ўрганиш', type: 'Деонтология', room: 'Тошкент туманлараро маъмурий судида', end: '17:00' }
+            ],
+            '2026-02-24': [
+                { num: 1, time: '09:00-10:20', subject: 'Мажбурий ижро бюросининг ва мансабдор шахсларининг қарорлари билан боғлиқ ишлар', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Мажбурий ижро бюросининг ва мансабдор шахсларининг ҳаракатлари(ҳаракатсизлиги) билан боғлиқ ишлар', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Мажбурий ижро бюросининг ва мансабдор шахсларининг ҳаракатлари(ҳаракатсизлиги) билан боғлиқ ишлар', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' },
+                { num: 4, time: '14:30-17:00', subject: 'Тошкент вилоят маъмурий судида мажбурий ижро бюросининг қарорлари ва мансабдор шахсларининг ҳаракатлари(ҳаракатсизлиги) билан боғлиқ ишлар бўйича суд амалиётини ўрганиш', type: 'Деонтология', room: 'Тошкент туманлараро маъмурий судида', end: '17:00' }
+            ],
+            '2026-02-25': [
+                { num: 1, time: '09:00-10:20', subject: 'Мажбурий ижро бюросининг чет элга чиқишга таъқиқ қўйиши билан боғлиқ низолар', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Мажбурий ижро бюросининг чет элга чиқишга таъқиқ қўйиши билан боғлиқ низолар', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Мажбурий ижро бюросининг ва мансабдор шахсларининг қарорлари билан боғлиқ ишлар', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' },
+                { num: 4, time: '14:30-17:20', subject: 'Олий суднинг Халқаро-ҳуқуқий бўлим фаолияти билан танишиш', type: 'Деонтология', room: 'Олий судда', end: '17:20' }
+            ],
+            '2026-02-26': [
+                { num: 1, time: '09:00-10:20', subject: 'Мажбурий ижро бюросининг ва мансабдор шахсларининг қарорлари билан боғлиқ ишлар', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Маҳаллий давлат ҳокимияти органлари, Фуқароларнинг ўзини ўзи бошқариш органлари ва фуқаролик жамияти институтлари', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Коррупцияга қарши курашишда жамоатчилик назорати институти ва уни амалга ошириш механизмлари. Коррупцияга қарши курашишда судлар фаолиятининг молиявий таъминотини кучайтириш масалалари', type: 'Назарий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' },
+                { num: 4, time: '14:00-16:00', subject: 'Тошкент туманлараро маъмурий судида мажбурий ижро бюросининг қарорлари ва мансабдор шахсларининг ҳаракатлари(ҳаракатсизлиги) билан боғлиқ ишлар бўйича суд амалиётини ўрганиш', type: 'Деонтология', room: 'Тошкент вилоят маъмурий судида', end: '16:00' }
+            ],
+            '2026-02-27': [
+                { num: 1, time: '09:00-10:20', subject: 'Судья фаолиятида суд иштирокчиларининг вербал ва новербал хатти-ҳаракатларининг аҳамияти', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Мажбурий ижро бюросининг ва мансабдор шахсларининг ҳаракатлари(ҳаракатсизлиги) билан боғлиқ ишлар', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Мажбурий ижро бюросининг ва мансабдор шахсларининг ҳаракатлари(ҳаракатсизлиги) билан боғлиқ ишлар', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' },
+                { num: 4, time: '14:30-17:00', subject: 'Тошкент шаҳар Мажбурий ижро бюроси туман бўлимлари фаолияти билан танишиш', type: 'Деонтология', room: 'Тошкент шаҳар Мажбурий ижро бюросида', end: '17:00' }
+            ],
+            '2026-02-28': [
+                { num: 1, time: '09:00-10:20', subject: 'Судлар томонидан халқаро шартномалар нормалари қоидаларининг қўлланилиши', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Суд-ҳуқуқ соҳаси ислоҳотларининг мазмун-моҳияти', type: 'Назарий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Мажбурий ижро бюросининг чет элга чиқишга таъқиқ қўйиши билан боғлиқ низолар', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' },
+                { num: 4, time: '14:00-15:20', subject: 'Олий Мажлис Қонунчилик палатасига ташрифни ташкил қилиш', type: 'Деонтология', room: 'Олий Мажлис Қонунчилик палатасида', end: '15:20' }
+            ],
+            '2026-03-02': [
+                { num: 1, time: '09:00-10:20', subject: 'Мажбурий ижро бюросининг чет элга чиқишга таъқиқ қўйиши билан боғлиқ низолар', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Суд ҳужжатларини апелляция тартибида қайта кўриш', type: 'Назарий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Суд ҳужжатларини кассация тартибида қайта кўриш', type: 'Назарий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' },
+                { num: 4, time: '14:30-17:00', subject: 'Имитация жараёни, назарий билимлари, амалий кўникмаси ва процессуал ҳужжатлар сифатини баҳолаш', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '17:00' }
+            ],
+            '2026-03-03': [
+                { num: 1, time: '09:00-10:20', subject: 'Суд ҳужжатларини тафтиш тартибида қайта кўриш', type: 'Назарий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Суд ҳужжатларини апелляция тартибида қайта кўриш', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Суд ҳужжатларини апелляция тартибида қайта кўриш', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' },
+                { num: 4, time: '14:30-17:00', subject: 'Тошкент вилоят маъмурий судида суд ҳужжатларини апелляция, кассация ва тафтиш тартибида қайта кўриш бўйича суд амалиётини ўрганиш', type: 'Деонтология', room: 'Тошкент шаҳар маъмурий судида', end: '17:00' }
+            ],
+            '2026-03-04': [
+                { num: 1, time: '09:00-10:20', subject: 'Суд ҳужжатларини кассация тартибида қайта кўриш', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Суд ҳужжатларини кассация тартибида қайта кўриш', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Суд ҳужжатларини тафтиш тартибида қайта кўриш', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' },
+                { num: 4, time: '14:30-17:00', subject: 'Тошкент шаҳар маъмурий судида суд ҳужжатларини апелляция, кассация ва тафтиш тартибида қайта кўриш бўйича суд амалиётини ўрганиш', type: 'Деонтология', room: 'Тошкент шаҳар маъмурий судида', end: '17:00' }
+            ],
+            '2026-03-05': [
+                { num: 1, time: '09:00-10:20', subject: 'Суд ҳужжатларини тафтиш тартибида қайта кўриш', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Маҳаллий давлат ҳокимияти органлари, Фуқароларнинг ўзини ўзи бошқариш органлари ва фуқаролик жамияти институтлари', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Коррупцияга қарши курашишда жамоатчилик назорати институти ва уни амалга ошириш механизмлари. Коррупцияга қарши курашишда судлар фаолиятининг молиявий таъминотини кучайтириш масалалари', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' },
+                { num: 4, time: '14:30-17:00', subject: 'Тошкент шаҳар маъмурий судида суд ҳужжатларини апелляция, кассация ва тафтиш тартибида қайта кўриш бўйича суд амалиётини ўрганиш', type: 'Деонтология', room: 'Тошкент вилоят маъмурий судида', end: '17:00' }
+            ],
+            '2026-03-06': [
+                { num: 1, time: '09:00-10:20', subject: 'Судья фаолиятида суд иштирокчиларининг вербал ва новербал хатти-ҳаракатларининг аҳамияти', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Суд ҳужжатларини апелляция тартибида қайта кўриш', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Суд ҳужжатларини апелляция тартибида қайта кўриш', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' },
+                { num: 4, time: '14:30-17:00', subject: 'Тошкент шаҳар маъмурий судида суд ҳужжатларини апелляция, кассация ва тафтиш тартибида қайта кўриш бўйича суд амалиётини ўрганиш', type: 'Деонтология', room: 'Тошкент вилоят маъмурий судида', end: '17:00' }
+            ],
+            '2026-03-07': [
+                { num: 1, time: '09:00-10:20', subject: 'Судлар томонидан халқаро шартномалар нормалари қоидаларининг қўлланилиши', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Судлар томонидан халқаро шартномалар нормалари қоидаларининг қўлланилиши', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Суд ҳужжатларини кассация тартибида қайта кўриш', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' }
+            ],
+            '2026-03-10': [
+                { num: 1, time: '09:00-10:20', subject: 'Суд ҳужжатларини кассация тартибида қайта кўриш', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Суд ҳужжатларини тафтиш тартибида қайта кўриш', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Суд ҳужжатларини тафтиш тартибида қайта кўриш', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' },
+                { num: 4, time: '14:30-17:00', subject: 'Имитация жараёни, назарий билимлар, амалий кўникма ва процессуал ҳужжатлар сифатини баҳолаш', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '17:00' }
+            ],
+            '2026-03-11': [
+                { num: 1, time: '09:00-10:20', subject: 'Қонуний кучга кирган суд ҳужжатларини янги очилган ҳолатлар бўйича қайта кўриш кўриб чиқиш ҳуқуқи, асослари', type: 'Назарий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Қонуний кучга кирган суд ҳужжатини янги очилган ҳолатлар бўйича қайта кўриш тўғрисидаги аризани бериш тартиби, муддати ва аризанинг шакли ва мазмуни', type: 'Назарий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Қонуний кучга кирган суд ҳужжатини янги очилган ҳолатлар бўйича қайта кўриш тўғрисидаги ариза бўйича иш юритиш тартиби ва муддатлари, суд ҳужжатлари.', type: 'Назарий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' },
+                { num: 4, time: '14:00-16:00', subject: 'Тошкент туманлараро маъмурий судида қонуний кучга кирган суд ҳужжатларини янги очилган ҳолатлар бўйича қайта кўриш бўйича суд амалиётини ўрганиш', type: 'Деонтология', room: 'Тошкент туманлараро маъмурий судида', end: '16:00' }
+            ],
+            '2026-03-12': [
+                { num: 1, time: '09:00-10:20', subject: 'Қонуний кучга кирган суд ҳужжатларини янги очилган ҳолатлар бўйича қайта кўриш кўриб чиқиш ҳуқуқи, асослари', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Суд ҳокимиятининг конституциявий-ҳуқуқий асослари', type: 'Назарий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Суд тизимида коррупцияга қарши курашишнинг халқаро-ҳуқуқий асослари', type: 'Назарий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' },
+                { num: 4, time: '14:00-16:00', subject: 'Тошкент шаҳар маъмурий судида қонуний кучга кирган суд ҳужжатларини янги очилган ҳолатлар бўйича қайта кўриш бўйича суд амалиётини ўрганиш', type: 'Деонтология', room: 'Тошкент шаҳар маъмурий судида', end: '16:00' }
+            ],
+            '2026-03-13': [
+                { num: 1, time: '09:00-10:20', subject: 'Оила психолгияси (гендер психология)', type: 'Назарий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Қонуний кучга кирган суд ҳужжатини янги очилган ҳолатлар бўйича қайта кўриш тўғрисидаги аризани бериш тартиби, муддати ва аризанинг шакли ва мазмуни', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Қонуний кучга кирган суд ҳужжатини янги очилган ҳолатлар бўйича қайта кўриш тўғрисидаги ариза бўйича иш юритиш тартиби ва муддатлари, суд ҳужжатлари.', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' },
+                { num: 4, time: '14:00-16:00', subject: 'Тошкент туманлараро маъмурий судида қонуний кучга кирган суд ҳужжатларини янги очилган ҳолатлар бўйича қайта кўриш бўйича суд амалиётини ўрганиш', type: 'Деонтология', room: 'Тошкент вилоят маъмурий судида', end: '16:00' }
+            ],
+            '2026-03-14': [
+                { num: 1, time: '09:00-10:20', subject: 'Судлар томонидан халқаро шартномалар нормалари қоидаларининг қўлланилиши', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Суд-ҳуқуқ соҳаси ислоҳотларининг мазмун-моҳияти', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Қонуний кучга кирган суд ҳужжатини янги очилган ҳолатлар бўйича қайта кўриш тўғрисидаги ариза бўйича иш юритиш тартиби ва муддатлари, суд ҳужжатлари.', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' },
+                { num: 4, time: '14:00-15:20', subject: 'Музейга олиб бориш', type: 'Тадбир', room: 'Музейда', end: '15:20' }
+            ],
+            '2026-03-16': [
+                { num: 1, time: '09:00-10:20', subject: 'Қонуний кучга кирган суд ҳужжатини янги очилган ҳолатлар бўйича қайта кўриш тўғрисидаги ариза бўйича иш юритиш тартиби ва муддатлари, суд ҳужжатлари.', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Қонуний кучга кирган суд ҳужжатларини янги очилган ҳолатлар бўйича қайта кўриш кўриб чиқиш ҳуқуқи, асослари', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Қонуний кучга кирган суд ҳужжатини янги очилган ҳолатлар бўйича қайта кўриш тўғрисидаги аризани бериш тартиби, муддати ва аризанинг шакли ва мазмуни', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' },
+                { num: 4, time: '14:30-17:00', subject: 'Тошкент туманлараро маъмурий судида қонуний кучга кирган суд ҳужжатларини янги очилган ҳолатлар бўйича қайта кўриш бўйича суд амалиётини ўрганиш', type: 'Деонтология', room: 'Тошкент туманлараро маъмурий судида', end: '17:00' }
+            ],
+            '2026-03-17': [
+                { num: 1, time: '09:00-10:20', subject: 'Қонуний кучга кирган суд ҳужжатини янги очилган ҳолатлар бўйича қайта кўриш тўғрисидаги ариза бўйича иш юритиш тартиби ва муддатлари, суд ҳужжатлари.', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Қонуний кучга кирган суд ҳужжатини янги очилган ҳолатлар бўйича қайта кўриш тўғрисидаги ариза бўйича иш юритиш тартиби ва муддатлари, суд ҳужжатлари.', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Қонуний кучга кирган суд ҳужжатини янги очилган ҳолатлар бўйича қайта кўриш тўғрисидаги ариза бўйича иш юритиш тартиби ва муддатлари, суд ҳужжатлари.', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' },
+                { num: 4, time: '14:00-16:00', subject: 'Имитация жараёни, назарий билимлар, амалий кўникма ва процессуал ҳужжатлар сифатини баҳолаш', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '16:00' }
+            ],
+            '2026-03-18': [
+                { num: 1, time: '09:00-10:20', subject: 'Суд ҳужжатларини ижрога қаратиш. Ижро варақаси ва уни бериш', type: 'Назарий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Ижро варақаси бўйича процессуал муддатлар', type: 'Назарий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Ижро иши юритишни тўхтатиб туриш, тугатиш ва ижро ишини юритишни тиклаш.', type: 'Назарий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' },
+                { num: 4, time: '14:30-17:00', subject: 'Тошкент туманлараро маъмурий судида суд ҳужжатларини ижро этиш билан боғлиқ суд амалиётини ўрганиш', type: 'Деонтология', room: 'Тошкент туманлараро маъмурий судида', end: '17:00' }
+            ],
+            '2026-03-19': [
+                { num: 1, time: '09:00-10:20', subject: 'Суд ҳужжатларини ижрога қаратиш. Ижро варақаси ва уни бериш', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Суд ҳокимиятининг конституциявий-ҳуқуқий асослари', type: 'Назарий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Суд тизимида коррупцияга қарши курашишнинг халқаро-ҳуқуқий асослари', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' },
+                { num: 4, time: '14:30-17:00', subject: 'Тошкент шаҳар маъмурий судида суд ҳужжатларини ижро этиш билан боғлиқ суд амалиётини ўрганиш', type: 'Деонтология', room: 'Тошкент шаҳар маъмурий судида', end: '17:00' }
+            ],
+            '2026-03-20': [
+                { num: 1, time: '09:00-10:20', subject: 'Оила психолгияси (гендер психология)', type: 'Назарий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Ижро варақаси бўйича процессуал муддатлар.', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Ижро иши юритишни тўхтатиб туриш, тугатиш ва ижро ишини юритишни тиклаш.', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' },
+                { num: 4, time: '14:30-17:00', subject: 'Тошкент шаҳар маъмурий судида суд ҳужжатларини ижро этиш билан боғлиқ суд амалиётини ўрганиш', type: 'Деонтология', room: 'Тошкент вилоят маъмурий судида', end: '17:00' }
+            ],
+            '2026-03-23': [
+                { num: 1, time: '09:00-10:20', subject: 'Ижро иши юритишни тўхтатиб туриш, тугатиш ва ижро ишини юритишни тиклаш.', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Ижро иши юритишни тўхтатиб туриш, тугатиш ва ижро ишини юритишни тиклаш.', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Суд ҳужжатларини ижрога қаратиш. Ижро варақаси ва уни бериш', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' },
+                { num: 4, time: '14:30-17:00', subject: 'Тошкент шаҳар Мажбурий ижро бюроси туман бўлимлари фаолияти билан танишиш', type: 'Деонтология', room: 'Тошкент шаҳар Мажбурий ижро бюросида', end: '17:00' }
+            ],
+            '2026-03-24': [
+                { num: 1, time: '09:00-10:20', subject: 'Ижро варақаси бўйича процессуал муддатлар', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Ижро иши юритишни тўхтатиб туриш, тугатиш ва ижро ишини юритишни тиклаш.', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Ижро иши юритишни тўхтатиб туриш, тугатиш ва ижро ишини юритишни тиклаш.', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' },
+                { num: 4, time: '14:00-16:00', subject: 'Тошкент шаҳар маъмурий судида суд ҳужжатларини ижро этиш билан боғлиқ суд амалиётини ўрганиш', type: 'Деонтология', room: 'Тошкент шаҳар маъмурий судида', end: '16:00' }
+            ],
+            '2026-03-25': [
+                { num: 1, time: '09:00-10:20', subject: 'Ижро иши юритишни тўхтатиб туриш, тугатиш ва ижро ишини юритишни тиклаш.', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '10:20' },
+                { num: 2, time: '10:30-11:50', subject: 'Ижро иши юритишни тўхтатиб туриш, тугатиш ва ижро ишини юритишни тиклаш.', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '11:50' },
+                { num: 3, time: '12:00-13:20', subject: 'Ижро иши юритишни тўхтатиб туриш, тугатиш ва ижро ишини юритишни тиклаш.', type: 'Имитация', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '13:20' },
+                { num: 4, time: '14:30-17:00', subject: 'Имитация жараёни, назарий билимлар, амалий кўникма ва процессуал ҳужжатлар сифатини баҳолаш', type: 'Амалий машғулот', room: 'Бино-1, 4-қават, 4-хона, 22 та', end: '17:00' }
+            ]
+        };
+
+        let currentDate = new Date();
+        let selectedDate = new Date();
+        let calendarDate = new Date();
+        let countdownInterval;
+
+        function init() {
+            updateTime();
+            setInterval(updateTime, 1000);
+            updateTabs();
+            renderLessons();
+            checkInstallHint();
+        }
+
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('currentTime').textContent = 
+                now.toLocaleTimeString('uz-UZ', { hour: '2-digit', minute: '2-digit' });
+            
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('currentDate').textContent = 
+                now.toLocaleDateString('uz-UZ', options);
+            document.getElementById('dayName').textContent = 
+                now.toLocaleDateString('uz-UZ', { weekday: 'long' });
+        }
+
+        function isSameDay(d1, d2) {
+            return d1.getFullYear() === d2.getFullYear() &&
+                   d1.getMonth() === d2.getMonth() &&
+                   d1.getDate() === d2.getDate();
+        }
+
+        function updateTabs() {
+            const yesterday = new Date(selectedDate);
+            yesterday.setDate(yesterday.getDate() - 1);
+            const tomorrow = new Date(selectedDate);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            
+            document.getElementById('yesterdayNum').textContent = yesterday.getDate();
+            document.getElementById('todayNum').textContent = selectedDate.getDate();
+            document.getElementById('tomorrowNum').textContent = tomorrow.getDate();
+            
+            const tabs = document.querySelectorAll('.nav-tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            if (isSameDay(selectedDate, currentDate)) {
+                tabs[1].classList.add('active');
+            } else if (isSameDay(selectedDate, yesterday)) {
+                tabs[0].classList.add('active');
+            } else if (isSameDay(selectedDate, tomorrow)) {
+                tabs[2].classList.add('active');
+            }
+        }
+
+        function changeDay(days) {
+            selectedDate.setDate(selectedDate.getDate() + days);
+            updateTabs();
+            renderLessons();
+        }
+
+        function goToToday() {
+            selectedDate = new Date();
+            updateTabs();
+            renderLessons();
+        }
+
+        function getLessons(date) {
+            const dateStr = date.toISOString().split('T')[0];
+            return scheduleData[dateStr] || [];
+        }
+
+        function renderLessons() {
+            const container = document.getElementById('lessonsContainer');
+            const emptyState = document.getElementById('emptyState');
+            const banner = document.getElementById('currentLessonBanner');
+            const progress = document.getElementById('dayProgress');
+            
+            const lessons = getLessons(selectedDate);
+            const now = new Date();
+            const isToday = isSameDay(selectedDate, now);
+            
+            container.innerHTML = '';
+            
+            if (lessons.length === 0) {
+                container.style.display = 'none';
+                emptyState.style.display = 'block';
+                banner.style.display = 'none';
+                progress.style.display = 'none';
+                return;
+            }
+            
+            container.style.display = 'flex';
+            emptyState.style.display = 'none';
+            progress.style.display = isToday ? 'block' : 'none';
+            
+            let currentLesson = null;
+            let completedCount = 0;
+            
+            lessons.forEach((lesson, index) => {
+                const [startTime, endTime] = lesson.time.split('-');
+                const [startHour, startMin] = startTime.split(':').map(Number);
+                const [endHour, endMin] = endTime.split(':').map(Number);
+                
+                const lessonStart = new Date(selectedDate);
+                lessonStart.setHours(startHour, startMin, 0);
+                const lessonEnd = new Date(selectedDate);
+                lessonEnd.setHours(endHour, endMin, 0);
+                
+                let status = 'upcoming';
+                let statusText = 'Kutilmoqda';
+                
+                if (isToday) {
+                    if (now > lessonEnd) {
+                        status = 'completed';
+                        statusText = 'Tugadi';
+                        completedCount++;
+                    } else if (now >= lessonStart && now <= lessonEnd) {
+                        status = 'active';
+                        statusText = 'Hozir';
+                        currentLesson = lesson;
+                        currentLesson.endTime = lessonEnd;
+                    }
+                }
+                
+                const card = document.createElement('div');
+                card.className = `lesson-card ${status}`;
+                card.innerHTML = `
+                    <span class="lesson-status ${status === 'active' ? 'now' : status === 'completed' ? 'finished' : 'pending'}">${statusText}</span>
+                    <div class="lesson-header">
+                        <div class="lesson-number">${lesson.num}</div>
+                        <div class="lesson-time">${lesson.time}</div>
+                    </div>
+                    <div class="lesson-subject">${lesson.subject}</div>
+                    <span class="lesson-type">${lesson.type}</span>
+                    <div class="lesson-room">📍 ${lesson.room}</div>
+                `;
+                container.appendChild(card);
+            });
+            
+            if (isToday) {
+                const progressPercent = (completedCount / lessons.length) * 100;
+                document.getElementById('progressBar').style.width = `${progressPercent}%`;
+            }
+            
+            if (isToday && currentLesson) {
+                banner.style.display = 'block';
+                document.getElementById('bannerSubject').textContent = currentLesson.subject;
+                document.getElementById('bannerTime').textContent = `${currentLesson.time} | ${currentLesson.type}`;
+                startCountdown(currentLesson.endTime);
+            } else {
+                banner.style.display = 'none';
+                stopCountdown();
+            }
+        }
+
+        function startCountdown(endTime) {
+            stopCountdown();
+            countdownInterval = setInterval(() => {
+                const now = new Date();
+                const diff = endTime - now;
+                
+                if (diff <= 0) {
+                    document.getElementById('countdownTime').textContent = '00:00:00';
+                    renderLessons();
+                    return;
+                }
+                
+                const hours = Math.floor(diff / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                
+                document.getElementById('countdownTime').textContent = 
+                    `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            }, 1000);
+        }
+
+        function stopCountdown() {
+            if (countdownInterval) {
+                clearInterval(countdownInterval);
+                countdownInterval = null;
+            }
+        }
+
+        function openCalendar() {
+            document.getElementById('calendarModal').classList.add('active');
+            calendarDate = new Date(selectedDate);
+            renderCalendar();
+        }
+
+        function closeCalendar() {
+            document.getElementById('calendarModal').classList.remove('active');
+        }
+
+        function changeMonth(delta) {
+            calendarDate.setMonth(calendarDate.getMonth() + delta);
+            renderCalendar();
+        }
+
+        function renderCalendar() {
+            const year = calendarDate.getFullYear();
+            const month = calendarDate.getMonth();
+            
+            document.getElementById('monthYear').textContent = 
+                calendarDate.toLocaleDateString('uz-UZ', { month: 'long', year: 'numeric' });
+            
+            const firstDay = new Date(year, month, 1);
+            const lastDay = new Date(year, month + 1, 0);
+            const daysInMonth = lastDay.getDate();
+            const startingDay = firstDay.getDay() || 7;
+            
+            const grid = document.getElementById('calendarGrid');
+            grid.innerHTML = '';
+            
+            const dayHeaders = ['Du', 'Se', 'Ch', 'Pa', 'Ju', 'Sh', 'Ya'];
+            dayHeaders.forEach(day => {
+                const header = document.createElement('div');
+                header.className = 'calendar-day-header';
+                header.textContent = day;
+                grid.appendChild(header);
+            });
+            
+            const prevMonth = new Date(year, month, 0);
+            for (let i = startingDay - 2; i >= 0; i--) {
+                const day = prevMonth.getDate() - i;
+                const cell = createCalendarDay(day, true);
+                grid.appendChild(cell);
+            }
+            
+            const today = new Date();
+            for (let day = 1; day <= daysInMonth; day++) {
+                const date = new Date(year, month, day);
+                const cell = createCalendarDay(day, false, date);
+                
+                if (isSameDay(date, today)) {
+                    cell.classList.add('today');
+                }
+                if (isSameDay(date, selectedDate)) {
+                    cell.classList.add('selected');
+                }
+                
+                const lessons = getLessons(date);
+                if (lessons.length > 0) {
+                    cell.classList.add('has-lessons');
+                }
+                
+                cell.onclick = () => selectDate(date);
+                grid.appendChild(cell);
+            }
+            
+            const totalCells = grid.children.length - 7;
+            const remainingCells = 35 - totalCells;
+            for (let day = 1; day <= remainingCells; day++) {
+                const cell = createCalendarDay(day, true);
+                grid.appendChild(cell);
+            }
+        }
+
+        function createCalendarDay(day, isOtherMonth, date = null) {
+            const cell = document.createElement('div');
+            cell.className = 'calendar-day' + (isOtherMonth ? ' other-month' : '');
+            cell.innerHTML = `<span class="day-number">${day}</span>`;
+            return cell;
+        }
+
+        function selectDate(date) {
+            selectedDate = new Date(date);
+            closeCalendar();
+            updateTabs();
+            renderLessons();
+        }
+
+        function checkInstallHint() {
+            const isIos = /iPad|iPhone|iPod/.test(navigator.userAgent);
+            const isAndroid = /Android/.test(navigator.userAgent);
+            const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+            
+            if (!isStandalone && (isIos || isAndroid)) {
+                setTimeout(() => {
+                    document.getElementById('installHint').classList.add('show');
+                    setTimeout(() => {
+                        document.getElementById('installHint').classList.remove('show');
+                    }, 5000);
+                }, 2000);
+            }
+        }
+
+        document.getElementById('calendarModal').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) {
+                closeCalendar();
+            }
+        });
+
+        init();
+    </script>
+
+</body></html>
